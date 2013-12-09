@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import ua.softserve.clientbanking.services.StudentsService;
+import ua.softserve.clientbanking.services.UsersService;
 
 
 /**
@@ -23,7 +23,7 @@ import ua.softserve.clientbanking.services.StudentsService;
 public class HomeController {
 	
 	@Autowired
-	private StudentsService studentsService;
+	private UsersService usersService;
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	/**
@@ -46,7 +46,7 @@ public class HomeController {
 	public String list(Locale locale, Model model) {
 		logger.info("Welcome to list! The client locale is {}.", locale);
 		
-		model.addAttribute("studentsList", studentsService.loadStudentList());
+		model.addAttribute("usersList", usersService.loadUserList());
 		
 		return "list";
 	}

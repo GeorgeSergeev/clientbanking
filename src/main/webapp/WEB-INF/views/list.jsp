@@ -10,18 +10,18 @@
 </head>
 
 
-<h3>List</h3>
+<h3>List 12345</h3>
 	<table class="data">
 		<tr>
-			<th>number</th>
 			<th>name</th>
-			<th>label</th>
+			<th>login</th>
+			<th>role</th>
 		</tr>
-		<c:forEach items="${studentsList}" var="student">		
+		<c:forEach items="${usersList}" var="user">		
 			<tr>
-				<td>${student.number}</td>
-				<td>${student.name}</td>
-				<td>${student.cost}</td>
+				<td>${user.name}</td>
+				<td>${user.login}</td>
+				<td>${user.role}</td>
 			</tr>
 		</c:forEach>
 	</table>
