@@ -16,10 +16,7 @@ import javax.sql.DataSource;
 
 public class UserDAOImpl implements UserDAO {
 	
-	private static final String SQL_LIST_USERS = "select user.id, user.name, user.login, roles.role from users "
-			+ "inner join roles on (users.role_id=roles.id)";
-	private static final String SQL_FIND_USER_BY_LOGIN = "select * from users where login = ?";
-
+	
 	private JdbcTemplate jdbcTemplate;
 
 	public void setDataSource(DataSource dataSource) {
@@ -34,11 +31,9 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public List<User> listUser() {
-		String sql = SQL_LIST_USERS;
-
 		List<User> users = new ArrayList<User>();
 
-		List<Map<String, Object>> rows = jdbcTemplate.queryForList(sql);
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList(SqlScripts.SQL_LIST_USERS);
 		for (Map<String, Object> row : rows) {
 			User user = new User((int) row.get("id"), (String) row.get("name"),
 					(String) row.get("login"), (String) row.get("role"));
@@ -49,8 +44,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public User findUserByLogin(String login) throws ObjectNotFoundException {
-		String sql = SQL_FIND_USER_BY_LOGIN;
+	public User findUserByLogin(String login) throws ObjectNotFoundException {	
 		RowMapper<User> mapper = new RowMapper<User>() {
 			public User mapRow(ResultSet rs, int rowNum) throws SQLException {
 				User User = new User(rs.getInt("id"), rs.getString("name"),
@@ -58,7 +52,7 @@ public class UserDAOImpl implements UserDAO {
 				return User;
 			}
 		};
-		User user = (User) jdbcTemplate.queryForObject(sql,
+		User user = (User) jdbcTemplate.queryForObject(SqlScripts.SQL_FIND_USER_BY_LOGIN,
 				new Object[] { login }, mapper);
 		if (null == user) {
 			throw new ObjectNotFoundException(User.class, login);
