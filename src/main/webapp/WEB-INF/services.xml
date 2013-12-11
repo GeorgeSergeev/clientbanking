@@ -7,7 +7,7 @@ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
  <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
-		<property name="url" value="jdbc:hsqldb:file:clientbanking;create=false" />
+		<property name="url" value="jdbc:hsqldb:c:/db/clientbanking;create=false" />
 		<property name="username" value="sa" />
 		<property name="password" value="" />
 	</bean>

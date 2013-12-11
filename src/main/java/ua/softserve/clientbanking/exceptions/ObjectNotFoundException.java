@@ -1,9 +1,8 @@
 package ua.softserve.clientbanking.exceptions;
-
+@SuppressWarnings("serial")
 public class ObjectNotFoundException extends NoteException {
 	private String objectType;
 	private String objectId;
-
 	/**
 	 * A convenience constructor which takes an object type name and the ID of the object
 	 *

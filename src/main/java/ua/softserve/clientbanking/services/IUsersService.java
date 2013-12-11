@@ -4,6 +4,6 @@ import java.util.List;
 
 import ua.softserve.clientbanking.domain.User;
 
-public interface UsersService {
+public interface IUsersService {
 	List <User> loadUserList();
 }

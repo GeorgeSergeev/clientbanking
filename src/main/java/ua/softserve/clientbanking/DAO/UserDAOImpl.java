@@ -33,10 +33,10 @@ public class UserDAOImpl implements UserDAO {
 	public List<User> listUser() {
 		List<User> users = new ArrayList<User>();
 
-		List<Map<String, Object>> rows = jdbcTemplate.queryForList(SqlScripts.SQL_LIST_USERS);
-		for (Map<String, Object> row : rows) {
+		List<Map<String, Object>> rows = jdbcTemplate.queryForList(SqlTemplates.SQL_LIST_USERS);
+		for (Map<String, Object>row : rows) {
 			User user = new User((int) row.get("id"), (String) row.get("name"),
-					(String) row.get("login"), (String) row.get("role"));
+					(String) row.get("login"), (String) row.get("role_name"), (String) row.get("password"));
 			users.add(user);
 		}
 
@@ -48,11 +48,11 @@ public class UserDAOImpl implements UserDAO {
 		RowMapper<User> mapper = new RowMapper<User>() {
 			public User mapRow(ResultSet rs, int rowNum) throws SQLException {
 				User User = new User(rs.getInt("id"), rs.getString("name"),
-						rs.getString("login"), rs.getString("role"));
+						rs.getString("login"), rs.getString("role_name"), rs.getString("password"));
 				return User;
 			}
 		};
-		User user = (User) jdbcTemplate.queryForObject(SqlScripts.SQL_FIND_USER_BY_LOGIN,
+		User user = (User) jdbcTemplate.queryForObject(SqlTemplates.SQL_FIND_USER_BY_LOGIN,
 				new Object[] { login }, mapper);
 		if (null == user) {
 			throw new ObjectNotFoundException(User.class, login);

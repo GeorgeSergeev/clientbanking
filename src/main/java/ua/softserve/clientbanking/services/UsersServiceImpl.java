@@ -1,23 +1,33 @@
 package ua.softserve.clientbanking.services;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
-import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
+
+import ua.softserve.clientbanking.DAO.UserDAO;
 import ua.softserve.clientbanking.domain.User;
-@Service
-public class UsersServiceImpl implements UsersService {
 
+public class UsersServiceImpl implements IUsersService,  UserDetailsService{
+	@Autowired
+	private UserDAO userDAO;
+	
 	@Override
 	public List<User> loadUserList() {
-		List<User> studentsList = new ArrayList<User>();
-		for (int i = 0; i < 10; i++) {
-			String role=((i%2)==0)?"Client":"Emploee";
-			User student=new User(i,"Ivan"+i,"Ivan"+i,role);
-			studentsList.add(student);
-		}
-		return studentsList;
+		return userDAO.listUser();
+	}
+
+	@Override
+	public UserDetails loadUserByUsername(String login)
+			throws UsernameNotFoundException {
+		
+		User user=userDAO.findUserByLogin(login);
+		return user;
+
 	}
 
 }

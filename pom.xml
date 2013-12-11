@@ -147,17 +147,36 @@
 			<artifactId>xercesImpl</artifactId>
 			<version>2.8.1</version>
 		</dependency>
-	<dependency>
-      <groupId>commons-dbcp</groupId>
-      <artifactId>commons-dbcp</artifactId>
-      <version>1.4</version>
-    </dependency>
-    <dependency>
-		<groupId>org.hsqldb</groupId>
-		<artifactId>hsqldb</artifactId>
-		<version>2.2.9</version>
-	</dependency>
+		<!--  HSQLDB -->
+		<dependency>
+      		<groupId>commons-dbcp</groupId>
+      		<artifactId>commons-dbcp</artifactId>
+      		<version>1.4</version>
+    	</dependency>
+    	<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>2.2.9</version>
+		</dependency>
             
+		<!-- Spring Security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>3.1.0.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>3.1.0.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>3.1.0.RELEASE</version>
+		</dependency>            
 	</dependencies>
 <repositories>
     <repository>

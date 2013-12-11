@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import ua.softserve.clientbanking.services.UsersService;
+import ua.softserve.clientbanking.services.IUsersService;
 
 
 /**
@@ -23,7 +23,7 @@ import ua.softserve.clientbanking.services.UsersService;
 public class HomeController {
 	
 	@Autowired
-	private UsersService usersService;
+	private IUsersService usersService;
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	/**
