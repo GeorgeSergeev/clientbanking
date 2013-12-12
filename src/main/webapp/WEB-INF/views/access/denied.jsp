@@ -7,10 +7,9 @@
 </head>
 
 <body>
-	<h1 id="banner">Home</h1>
+	<h1 id="banner">Unauthorized</h1>
 	<hr/>
 	
-	<p>Welcome <span id="username"><%=SecurityContextHolder.getContext().getAuthentication().getName()%></span>!</p>
-	
+	<p class="message">Access denied!</p>
 </body>
 </html>

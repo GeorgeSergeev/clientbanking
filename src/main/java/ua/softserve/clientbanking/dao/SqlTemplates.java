@@ -1,4 +1,4 @@
-package ua.softserve.clientbanking.DAO;
+package ua.softserve.clientbanking.dao;
 
 public class SqlTemplates {
 	public static final String SQL_LIST_USERS = "select user_info.id, user_info.name, user_info.login, user_roles.role_name, user_info.password"+

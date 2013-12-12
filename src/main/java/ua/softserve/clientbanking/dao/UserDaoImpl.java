@@ -1,4 +1,4 @@
-package ua.softserve.clientbanking.DAO;
+package ua.softserve.clientbanking.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,7 +14,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 import javax.sql.DataSource;
 
-public class UserDAOImpl implements UserDAO {
+public class UserDaoImpl implements UserDao {
 	
 	
 	private JdbcTemplate jdbcTemplate;
@@ -23,12 +23,13 @@ public class UserDAOImpl implements UserDAO {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 
+/*	
 	@Override
 	public void addUser(User user) {
-		// TODO Auto-generated method stub
+		
 
 	}
-
+*/
 	@Override
 	public List<User> listUser() {
 		List<User> users = new ArrayList<User>();
