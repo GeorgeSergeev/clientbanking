@@ -36,7 +36,7 @@ public class UserDaoImpl implements UserDao {
 
 		List<Map<String, Object>> rows = jdbcTemplate.queryForList(SqlTemplates.SQL_LIST_USERS);
 		for (Map<String, Object>row : rows) {
-			User user = new User((int) row.get("id"), (String) row.get("name"),
+			User user = new User((Integer) row.get("id"), (String) row.get("name"),
 					(String) row.get("login"), (String) row.get("role_name"), (String) row.get("password"));
 			users.add(user);
 		}
@@ -48,9 +48,9 @@ public class UserDaoImpl implements UserDao {
 	public User findUserByLogin(String login) throws ObjectNotFoundException {	
 		RowMapper<User> mapper = new RowMapper<User>() {
 			public User mapRow(ResultSet rs, int rowNum) throws SQLException {
-				User User = new User(rs.getInt("id"), rs.getString("name"),
+				User user = new User(rs.getInt("id"), rs.getString("name"),
 						rs.getString("login"), rs.getString("role_name"), rs.getString("password"));
-				return User;
+				return user;
 			}
 		};
 		User user = (User) jdbcTemplate.queryForObject(SqlTemplates.SQL_FIND_USER_BY_LOGIN,

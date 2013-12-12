@@ -16,8 +16,8 @@
 	<http auto-config="true"  use-expressions="true">
 		<intercept-url pattern="/login" access="permitAll"/>
 		<intercept-url pattern="/logout" access="permitAll"/>
-		<intercept-url pattern="/denied" access="hasRole('ROLE_USER')"/>
-		<intercept-url pattern="/" access="hasRole('ROLE_USER')"/>
+		<intercept-url pattern="/denied" access="permitAll"/>
+		<intercept-url pattern="/" access="hasAnyRole('ROLE_CLIENT','ROLE_EMPLOEE','ROLE_ADMIN')"/>
 		<intercept-url pattern="/client" access="hasRole('ROLE_CLIENT')"/>
 		<intercept-url pattern="/emploee" access="hasRole('ROLE_EMPLOEE')"/>
 		<intercept-url pattern="/admin" access="hasRole('ROLE_ADMIN')"/>
@@ -35,7 +35,7 @@
 	
 	<authentication-manager>
 	        <authentication-provider user-service-ref="usersServiceImpl">
-	        		<password-encoder hash="md5"/>
+<!--  	        		<password-encoder ref="passwordEncoder"/> -->
 	        </authentication-provider>
 	</authentication-manager>
 </beans:beans>
