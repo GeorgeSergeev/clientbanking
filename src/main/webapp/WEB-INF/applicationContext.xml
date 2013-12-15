@@ -48,5 +48,8 @@
 	<bean id="usersServiceImpl" class="ua.softserve.clientbanking.services.UsersServiceImpl">
 	</bean>
 	
+	<bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.MessageDigestPasswordEncoder">
+    	 <constructor-arg value="MD5"/>
+ 	</bean>	        			
 	
 </beans>
