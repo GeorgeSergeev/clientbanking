@@ -5,24 +5,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-/*
-public class SQLMapTest {
-	@Test
-	public void testConnection() throws Exception{			
-		assertTrue(true);
-	}
-
-
-}
-
-*/
-
-
-
 import java.util.List;
 import java.util.Map;
-
-
 
 
 import org.junit.Before;
@@ -41,9 +25,9 @@ public class SQLMapTest {
 	@Before
     public void before() throws Exception {	    		
 		dataSource= new BasicDataSource(); 
-		dataSource.setDriverClassName("org.hsqldb.jdbcDriver");
-		dataSource.setUrl("jdbc:hsqldb:file:c:/db/clientbankingtest;create=false");
-		dataSource.setUsername("sa");
+		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+		dataSource.setUrl("jdbc:mysql://localhost/clientbanking_test");
+		dataSource.setUsername("root");
 		dataSource.setPassword(""); 
 		jdbcTemplate = new JdbcTemplate(dataSource); 
 	}
